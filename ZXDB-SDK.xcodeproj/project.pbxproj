@@ -10,6 +10,13 @@
 		CD1DE50D264A8AE800E4FCAD /* ZXDB_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1DE503264A8AE800E4FCAD /* ZXDB_SDK.framework */; };
 		CD1DE512264A8AE800E4FCAD /* ZXDB_SDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE511264A8AE800E4FCAD /* ZXDB_SDKTests.swift */; };
 		CD1DE514264A8AE800E4FCAD /* ZXDB_SDK.h in Headers */ = {isa = PBXBuildFile; fileRef = CD1DE506264A8AE800E4FCAD /* ZXDB_SDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD1DE51F264A8BD600E4FCAD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE51E264A8BD600E4FCAD /* Network.swift */; };
+		CD1DE522264AA5B400E4FCAD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE521264AA5B400E4FCAD /* Logger.swift */; };
+		CD1DE525264AA76D00E4FCAD /* ZXDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE524264AA76D00E4FCAD /* ZXDBError.swift */; };
+		CD1DE526264AA76D00E4FCAD /* ZXDBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE524264AA76D00E4FCAD /* ZXDBError.swift */; };
+		CD1DE527264AA93700E4FCAD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE51E264A8BD600E4FCAD /* Network.swift */; };
+		CD1DE528264AA93A00E4FCAD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE521264AA5B400E4FCAD /* Logger.swift */; };
+		CD1DE52B264AD64A00E4FCAD /* ZXDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE52A264AD64A00E4FCAD /* ZXDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +36,11 @@
 		CD1DE50C264A8AE800E4FCAD /* ZXDB-SDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ZXDB-SDKTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1DE511264A8AE800E4FCAD /* ZXDB_SDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXDB_SDKTests.swift; sourceTree = "<group>"; };
 		CD1DE513264A8AE800E4FCAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD1DE51E264A8BD600E4FCAD /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		CD1DE521264AA5B400E4FCAD /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		CD1DE524264AA76D00E4FCAD /* ZXDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXDBError.swift; sourceTree = "<group>"; };
+		CD1DE52A264AD64A00E4FCAD /* ZXDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXDB.swift; sourceTree = "<group>"; };
+		CD1DE553264AD84E00E4FCAD /* ZXDBSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZXDBSDK.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +65,7 @@
 		CD1DE4F9264A8AE800E4FCAD = {
 			isa = PBXGroup;
 			children = (
+				CD1DE553264AD84E00E4FCAD /* ZXDBSDK.podspec */,
 				CD1DE505264A8AE800E4FCAD /* ZXDB-SDK */,
 				CD1DE510264A8AE800E4FCAD /* ZXDB-SDKTests */,
 				CD1DE504264A8AE800E4FCAD /* Products */,
@@ -71,6 +84,10 @@
 		CD1DE505264A8AE800E4FCAD /* ZXDB-SDK */ = {
 			isa = PBXGroup;
 			children = (
+				CD1DE529264AD63400E4FCAD /* ZXDB */,
+				CD1DE523264AA75B00E4FCAD /* Models */,
+				CD1DE520264AA59D00E4FCAD /* Services */,
+				CD1DE51D264A8BBB00E4FCAD /* Networking */,
 				CD1DE506264A8AE800E4FCAD /* ZXDB_SDK.h */,
 				CD1DE507264A8AE800E4FCAD /* Info.plist */,
 			);
@@ -84,6 +101,38 @@
 				CD1DE513264A8AE800E4FCAD /* Info.plist */,
 			);
 			path = "ZXDB-SDKTests";
+			sourceTree = "<group>";
+		};
+		CD1DE51D264A8BBB00E4FCAD /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CD1DE51E264A8BD600E4FCAD /* Network.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CD1DE520264AA59D00E4FCAD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CD1DE521264AA5B400E4FCAD /* Logger.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CD1DE523264AA75B00E4FCAD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CD1DE524264AA76D00E4FCAD /* ZXDBError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CD1DE529264AD63400E4FCAD /* ZXDB */ = {
+			isa = PBXGroup;
+			children = (
+				CD1DE52A264AD64A00E4FCAD /* ZXDB.swift */,
+			);
+			path = ZXDB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,6 +196,7 @@
 				TargetAttributes = {
 					CD1DE502264A8AE800E4FCAD = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 					CD1DE50B264A8AE800E4FCAD = {
 						CreatedOnToolsVersion = 12.5;
@@ -194,6 +244,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1DE522264AA5B400E4FCAD /* Logger.swift in Sources */,
+				CD1DE52B264AD64A00E4FCAD /* ZXDB.swift in Sources */,
+				CD1DE525264AA76D00E4FCAD /* ZXDBError.swift in Sources */,
+				CD1DE51F264A8BD600E4FCAD /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +255,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD1DE526264AA76D00E4FCAD /* ZXDBError.swift in Sources */,
 				CD1DE512264A8AE800E4FCAD /* ZXDB_SDKTests.swift in Sources */,
+				CD1DE527264AA93700E4FCAD /* Network.swift in Sources */,
+				CD1DE528264AA93A00E4FCAD /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +398,7 @@
 		CD1DE518264A8AE800E4FCAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FAGJTP495D;
@@ -349,6 +407,8 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "ZXDB-SDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,6 +417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.willowrod.ZXDB-SDK";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +426,7 @@
 		CD1DE519264A8AE800E4FCAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = FAGJTP495D;
@@ -373,6 +435,8 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "ZXDB-SDK/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,6 +453,7 @@
 		CD1DE51B264A8AE800E4FCAD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAGJTP495D;
 				INFOPLIST_FILE = "ZXDB-SDKTests/Info.plist";
@@ -407,6 +472,7 @@
 		CD1DE51C264A8AE800E4FCAD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FAGJTP495D;
 				INFOPLIST_FILE = "ZXDB-SDKTests/Info.plist";
