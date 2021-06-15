@@ -16,6 +16,15 @@ public class ZXDBError: Error{
       Create a new error model with a defined error message
      * @param message An error message
      */
+    public init(code: Int, message: String) {
+        self.code = code
+        addMessage(message: message)
+    }
+    
+    /**
+      Create a new error model with a defined error message
+     * @param message An error message
+     */
     public init(message: String) {
         addMessage(message: message)
     }

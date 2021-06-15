@@ -10,6 +10,26 @@ import Foundation
 public class Network {
     public static let common: Network = Network()
     
+    public func getItems(_ url: String) async throws -> [SearchItem] {
+        let validURL = URL(string: url.replacingOccurrences(of: " ", with: "%20"))
+        print("URL = \(validURL!)")
+        var urlRequest = URLRequest(url: validURL!)
+        urlRequest.httpMethod = "GET"
+        
+      //  if #available(macCatalyst 15.0, *) {
+            if #available(iOS 15.0, *) {
+                let (data, response) = try await URLSession.shared.data(for: urlRequest)
+   
+            guard (response as? HTTPURLResponse)?.statusCode == 200 else { return [] }
+            let responseObject = try JSONDecoder().decode(SearchResponse.self, from: data)
+            return responseObject.getAvailableGames()
+        } else {
+            return []
+        }
+    }
+    
+    
+    
     public func get<T: Codable>(_ url: String, completion: ((Result<T, ZXDBError>) -> Void)?) {
         logNetwork(data: "URL: \(url)")
         guard let validURL = URL(string: url.replacingOccurrences(of: " ", with: "%20")) else {
@@ -49,5 +69,37 @@ public class Network {
             
         }
         request.resume()
+    }
+    
+    public func download(url: URL, completion: @escaping (String?, ZXDBError?) -> Void)
+    {
+        let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+
+        if FileManager().fileExists(atPath: destinationUrl.path)
+        {
+            print("File already exists [\(destinationUrl.path)]")
+            completion(destinationUrl.path, nil)
+        }
+        else if let dataFromURL = NSData(contentsOf: url)
+        {
+            if dataFromURL.write(to: destinationUrl, atomically: true)
+            {
+                print("file saved [\(destinationUrl.path)]")
+                completion(destinationUrl.path, nil)
+            }
+            else
+            {
+                print("error saving file")
+                let error = ZXDBError(code: 1001, message: "Error saving file")  
+                completion(destinationUrl.path, error)
+            }
+        }
+        else
+        {
+            let error = ZXDBError(code: 1002, message: "Error downloading file")
+            completion(destinationUrl.path, error)
+        }
     }
 }

@@ -17,6 +17,8 @@
 		CD1DE527264AA93700E4FCAD /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE51E264A8BD600E4FCAD /* Network.swift */; };
 		CD1DE528264AA93A00E4FCAD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE521264AA5B400E4FCAD /* Logger.swift */; };
 		CD1DE52B264AD64A00E4FCAD /* ZXDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DE52A264AD64A00E4FCAD /* ZXDB.swift */; };
+		CDBACDB12677984E0070D7FA /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBACDB02677984D0070D7FA /* SearchResponse.swift */; };
+		CDBACDB2267798520070D7FA /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBACDB02677984D0070D7FA /* SearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,7 @@
 		CD1DE524264AA76D00E4FCAD /* ZXDBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXDBError.swift; sourceTree = "<group>"; };
 		CD1DE52A264AD64A00E4FCAD /* ZXDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZXDB.swift; sourceTree = "<group>"; };
 		CD1DE553264AD84E00E4FCAD /* ZXDBSDK.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZXDBSDK.podspec; sourceTree = "<group>"; };
+		CDBACDB02677984D0070D7FA /* SearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 		CD1DE523264AA75B00E4FCAD /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CDBACDB02677984D0070D7FA /* SearchResponse.swift */,
 				CD1DE524264AA76D00E4FCAD /* ZXDBError.swift */,
 			);
 			path = Models;
@@ -245,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1DE522264AA5B400E4FCAD /* Logger.swift in Sources */,
+				CDBACDB12677984E0070D7FA /* SearchResponse.swift in Sources */,
 				CD1DE52B264AD64A00E4FCAD /* ZXDB.swift in Sources */,
 				CD1DE525264AA76D00E4FCAD /* ZXDBError.swift in Sources */,
 				CD1DE51F264A8BD600E4FCAD /* Network.swift in Sources */,
@@ -256,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1DE526264AA76D00E4FCAD /* ZXDBError.swift in Sources */,
+				CDBACDB2267798520070D7FA /* SearchResponse.swift in Sources */,
 				CD1DE512264A8AE800E4FCAD /* ZXDB_SDKTests.swift in Sources */,
 				CD1DE527264AA93700E4FCAD /* Network.swift in Sources */,
 				CD1DE528264AA93A00E4FCAD /* Logger.swift in Sources */,
