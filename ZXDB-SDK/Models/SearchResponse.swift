@@ -37,9 +37,17 @@ public struct SearchHits: Codable{
     var max_score: Double = 0
 }
 
-public struct SearchItem: Codable {
-    var data: ItemData = ItemData()
-    var id: String = ""
+public struct SearchItem: Codable, Hashable {
+    public static func == (lhs: SearchItem, rhs: SearchItem) -> Bool {
+       return lhs.id == rhs.id
+    }
+    
+public func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+}
+    
+    public var data: ItemData = ItemData()
+    public var id: String = ""
     enum CodingKeys: String, CodingKey {
         case data = "_source"
         case id = "_id"
@@ -47,53 +55,58 @@ public struct SearchItem: Codable {
 }
 
 public struct ItemData: Codable {
-    var contentType: String? = ""
-    var additionalDownloads: [DownloadData] = []
-    var title: String? = ""
-    var machineType: String? = ""
-    var screens: [ImageData] = []
-    var zxinfoVersion: String? = ""
-    var releases: [ReleaseData] = []
-    var availability: String? = ""
+    public var contentType: String? = ""
+    public var additionalDownloads: [DownloadData] = []
+    public var title: String? = ""
+    public var machineType: String? = ""
+    public var screens: [ImageData] = []
+    public var zxinfoVersion: String? = ""
+    public var releases: [ReleaseData] = []
+    public var availability: String? = ""
 }
 
 public struct DownloadData: Codable {
-    var path: String? = ""
-    var format: String? = ""
-    var language: String? = "en"
-    var type: String? = ""
-    var size: Int = 0
+    public var path: String? = ""
+    public var format: String? = ""
+    public var language: String? = "en"
+    public var type: String? = ""
+    public var size: Int = 0
 }
 
 public struct ImageData: Codable {
-    var filename: String? = ""
-    var size: Int = 0
-    var scrUrl: String? = ""
-    var format: String? = ""
-    var type: String? = ""
-    var title: String? = ""
-    var url: String? = ""
+    public var filename: String? = ""
+    public var size: Int = 0
+    public var scrUrl: String? = ""
+    public var format: String? = ""
+    public var type: String? = ""
+    public var title: String? = ""
+    public var url: String? = ""
 }
 
 public struct ReleaseData: Codable {
-    var releaseSeq: Int = 0
-    var publishers: [PublisherData] = []
-    var files: [FileData] = []
+    public var releaseSeq: Int = 0
+    public var publishers: [PublisherData] = []
+    public var files: [FileData] = []
 }
 
 public struct PublisherData: Codable {
   //  var  : String = ""
-    var country: String? = ""
-    var name: String? = ""
-    var labelType: String? = ""
-    var publisherSeq: Int = 0
+    public var country: String? = ""
+    public var name: String? = ""
+    public var labelType: String? = ""
+    public var publisherSeq: Int = 0
 }
 
-public struct FileData: Codable {
-    var path: String? = ""
-    var format: String? = ""
-    var origin: String? = ""
-    var type: String? = ""
-    var encodingScheme: String? = ""
-    var size: Int = 0
+public struct FileData: Codable, Hashable {
+
+    
+public func hash(into hasher: inout Hasher) {
+    hasher.combine(path)
+}
+    public var path: String? = ""
+    public var format: String? = ""
+    public var origin: String? = ""
+    public var type: String? = ""
+    public var encodingScheme: String? = ""
+    public var size: Int = 0
 }

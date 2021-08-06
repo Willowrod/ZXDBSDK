@@ -13,18 +13,22 @@ public class ZXDB {
     
     public init() {}
     
-    public func search(_ query: String) {
+    public static var shared = ZXDB()
+    
+    public func search(_ query: String, completion: @escaping (([SearchItem]) -> Void)) {
         Network.common.get("\(SEARCHURL)\(query)") { (result: Result<SearchResponse, ZXDBError>) in
             switch result {
             case .success(let data):
                 data.logResponse(filter: query)
+                completion(data.hits.hits)
             case .failure(let error):
                 print(error.getMessages())
+                completion([])
             }
         }
     }
     
-    public func asyncSearch(_ query: String) async throws -> [SearchItem] {
-        return try await Network.common.getItems("\(SEARCHURL)\(query)")
-    }
+//    public func asyncSearch(_ query: String) async throws -> [SearchItem] {
+//        return try await Network.common.getItems("\(SEARCHURL)\(query)")
+//    }
 }
