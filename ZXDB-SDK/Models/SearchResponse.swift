@@ -35,6 +35,11 @@ public struct SearchResponse: Codable {
 public struct SearchHits: Codable{
     var hits: [SearchItem] = []
     var max_score: Double = 0
+    var total: SearchTotals = SearchTotals()
+}
+
+public struct SearchTotals: Codable{
+    var value: Int? = 0
 }
 
 public struct SearchItem: Codable, Hashable {
@@ -70,12 +75,12 @@ public struct DownloadData: Codable {
     public var format: String? = ""
     public var language: String? = "en"
     public var type: String? = ""
-    public var size: Int = 0
+    public var size: Int? = 0
 }
 
 public struct ImageData: Codable {
     public var filename: String? = ""
-    public var size: Int = 0
+    public var size: Int? = 0
     public var scrUrl: String? = ""
     public var format: String? = ""
     public var type: String? = ""
@@ -84,7 +89,7 @@ public struct ImageData: Codable {
 }
 
 public struct ReleaseData: Codable {
-    public var releaseSeq: Int = 0
+    public var releaseSeq: Int? = 0
     public var publishers: [PublisherData] = []
     public var files: [FileData] = []
 }
@@ -94,7 +99,7 @@ public struct PublisherData: Codable {
     public var country: String? = ""
     public var name: String? = ""
     public var labelType: String? = ""
-    public var publisherSeq: Int = 0
+    public var publisherSeq: Int? = 0
 }
 
 public struct FileData: Codable, Hashable {
@@ -108,5 +113,5 @@ public func hash(into hasher: inout Hasher) {
     public var origin: String? = ""
     public var type: String? = ""
     public var encodingScheme: String? = ""
-    public var size: Int = 0
+    public var size: Int? = 0
 }
