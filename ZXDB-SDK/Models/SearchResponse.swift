@@ -114,4 +114,13 @@ public func hash(into hasher: inout Hasher) {
     public var type: String? = ""
     public var encodingScheme: String? = ""
     public var size: Int? = 0
+
+    public func fileName() -> String {
+        let filePath = path
+        let allSections = filePath?.split(separator: "/")
+        if let lastSection = allSections?.last, let fName = lastSection.split(separator: ".").first {
+return String(fName)
+        }
+        return "Unknown"
+    }
 }
