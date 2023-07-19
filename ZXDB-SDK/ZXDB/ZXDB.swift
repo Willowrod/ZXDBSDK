@@ -17,6 +17,8 @@ public class ZXDB {
     
     public static var shared = ZXDB()
     
+    var currentFormatType = ""
+    
     var currentSearchTerm = ""
     
     var currentOffset = 0
@@ -31,7 +33,7 @@ public class ZXDB {
         } else {
             currentOffset = Int(totalItems/pageSize)
         }
-        search(currentSearchTerm, offset: currentOffset, completion: completion)
+        search(currentSearchTerm, offset: currentOffset, format: currentFormatType, completion: completion)
     }
     
     public func previous(completion: @escaping (([SearchItem]) -> Void)) {
@@ -42,7 +44,7 @@ public class ZXDB {
         } else {
             currentOffset = 0
         }
-        search(currentSearchTerm, offset: currentOffset, completion: completion)
+        search(currentSearchTerm, offset: currentOffset, format: currentFormatType, completion: completion)
     }
     
     public func reset(){
@@ -51,10 +53,12 @@ public class ZXDB {
         currentSearchTerm = ""
     }
     
-    public func search(_ query: String, offset: Int = 0, completion: @escaping (([SearchItem]) -> Void)) {
+    public func search(_ query: String, offset: Int = 0, format: String = "tzx", completion: @escaping (([SearchItem]) -> Void)) {
         currentSearchTerm = query
         currentOffset = offset
-        Network.common.get("\(SEARCHURL)offset=\(offset)&size=\(pageSize)&query=\(query)") { (result: Result<SearchResponse, ZXDBError>) in
+        currentFormatType = format
+        let url = "\(SEARCHURL)offset=\(offset)&size=\(pageSize)&tosectype=\(currentFormatType)&query=\(query)"
+        Network.common.get(url) { (result: Result<SearchResponse, ZXDBError>) in
             switch result {
             case .success(let data):
                 data.logResponse(filter: query)

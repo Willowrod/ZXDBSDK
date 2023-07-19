@@ -14,9 +14,10 @@ public struct SearchResponse: Codable {
     func logResponse(filter: String) {
         hits.hits.filter({
             $0.data.contentType == "SOFTWARE" && $0.data.availability == "Available" && $0.data.title != nil && $0.data.title!.contains(filter)
-        }).forEach {item in
-            print("... Item ... \(item) \n\n")
-        }
+        })
+//        .forEach {item in
+//            print("... Item ... \(item) \n\n")
+//        }
     }
     
     func getAvailableGames(filter: String) -> [SearchItem] {

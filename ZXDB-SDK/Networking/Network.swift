@@ -61,19 +61,16 @@ public class Network {
 
         if FileManager().fileExists(atPath: destinationUrl.path)
         {
-            print("File already exists [\(destinationUrl.path)]")
             completion(destinationUrl.path, nil)
         }
         else if let dataFromURL = NSData(contentsOf: url)
         {
             if dataFromURL.write(to: destinationUrl, atomically: true)
             {
-                print("file saved [\(destinationUrl.path)]")
                 completion(destinationUrl.path, nil)
             }
             else
             {
-                print("error saving file")
                 let error = ZXDBError(code: 1001, message: "Error saving file")  
                 completion(destinationUrl.path, error)
             }
