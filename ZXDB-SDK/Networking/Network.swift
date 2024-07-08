@@ -20,37 +20,39 @@ public class Network {
             completion?(.failure(error))
             return
         }
-        let session = URLSession(configuration: .default)
-        var urlRequest = URLRequest(url: validURL)
-        urlRequest.httpMethod = "GET"
-        let request = session.dataTask(with: urlRequest) {data, response, error in
-            if let err = error {
-                DispatchQueue.main.async {
-                    let streamError = ZXDBError.init(message: err.localizedDescription)
-                    if let httpResponse = response as? HTTPURLResponse {
-                        streamError.code = httpResponse.statusCode
+        //let session = URLSession(configuration: .default)
+        Task {
+            var urlRequest = URLRequest(url: validURL)
+            urlRequest.httpMethod = "GET"
+            let request = URLSession.shared.dataTask(with: urlRequest) {data, response, error in
+                if let err = error {
+                    DispatchQueue.main.async {
+                        let streamError = ZXDBError.init(message: err.localizedDescription)
+                        if let httpResponse = response as? HTTPURLResponse {
+                            streamError.code = httpResponse.statusCode
                         }
-                    logError(data: streamError.getMessages())
-                    completion?(.failure(streamError))
+                        logError(data: streamError.getMessages())
+                        completion?(.failure(streamError))
+                    }
+                    return
                 }
-                return
-                       }
-            
-            guard response != nil, let data = data else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                do {
-                    let responseObject = try JSONDecoder().decode(T.self, from: data)
-                completion?(.success(responseObject))
-                } catch {
-                    logError(data: error.localizedDescription)
+                
+                guard response != nil, let data = data else {
+                    return
                 }
+                
+                DispatchQueue.main.async {
+                    do {
+                        let responseObject = try JSONDecoder().decode(T.self, from: data)
+                        completion?(.success(responseObject))
+                    } catch {
+                        logError(data: error.localizedDescription)
+                    }
+                }
+                
             }
-            
+            request.resume()
         }
-        request.resume()
     }
     
     public func download(url: URL, completion: @escaping (String?, ZXDBError?) -> Void)
