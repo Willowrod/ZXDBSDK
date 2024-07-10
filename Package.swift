@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.10
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "ZXDB-SDK",
     platforms: [
-        .iOS(.v12),
-        .macOS(.v11)
+        .macOS(.v14),
+        .iOS(.v17)
     ],
     products: [
         .library(
