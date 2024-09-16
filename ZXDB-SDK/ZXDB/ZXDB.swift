@@ -57,7 +57,7 @@ public class ZXDB {
         currentSearchTerm = query
         currentOffset = offset
         currentFormatType = format
-        let url = "\(SEARCHURL)offset=\(offset)&size=\(pageSize)&tosectype=\(currentFormatType)&query=\(query)"
+        let url = "\(SEARCHURL)offset=\(offset)&size=\(pageSize)&query=\(query)" //&tosectype=\(currentFormatType)&tosectype=z80
         Network.common.get(url) { (result: Result<SearchResponse, ZXDBError>) in
             switch result {
             case .success(let data):
